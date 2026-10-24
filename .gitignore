@@ -7,3 +7,6 @@ dist
 
 # Source documents extracted from the owner's Word file — never deploy
 _source/
+
+.vercel
+.env*
