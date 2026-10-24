@@ -1,0 +1,100 @@
+@import 'tailwindcss';
+
+/* ── Full Dark Institutional Palette ──────────────────────────────────────
+   Cohesive carbon-obsidian surfaces (#07090e → #151d2c), crisp alabaster &
+   silver-slate typography, and a single refined champagne-gold accent.
+   ------------------------------------------------------------------------- */
+@theme {
+  --font-display: 'Fraunces Variable', 'Georgia', serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Dark Obsidian Surfaces */
+  --color-obsidian-950: #07090e;
+  --color-obsidian-900: #0b0f17;
+  --color-obsidian-850: #101622;
+  --color-obsidian-800: #161f30;
+  --color-obsidian-700: #1f2b42;
+
+  /* Typography on Dark */
+  --color-ink: #f8fafc;
+  --color-ink-muted: #94a3b8; /* 7.1:1 on #07090e */
+  --color-ink-subtle: #64748b;
+
+  /* Single Accent: Luminous Champagne Gold */
+  --color-gold-300: #f3d999;
+  --color-gold-400: #e2b86b;
+  --color-gold-500: #c99a49;
+
+  --radius-card: 1.25rem;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-obsidian-950 text-ink font-sans antialiased;
+  font-feature-settings: 'cv11', 'ss01';
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-obsidian-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold-400);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Subtle dot matrix on dark sections */
+.grain {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Architectural grid lines on anchor dark sections */
+.grid-lines {
+  background-image:
+    linear-gradient(rgba(226, 184, 107, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 184, 107, 0.055) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 65% 35%, black 25%, transparent 75%);
+}
+
+/* Placeholder chips for [ADD: ...] values */
+.placeholder-chip {
+  @apply inline-flex items-center rounded-md border border-dashed px-2 py-0.5 text-[0.8em] font-medium;
+  border-color: rgba(226, 184, 107, 0.45);
+  color: var(--color-gold-300);
+  background: rgba(226, 184, 107, 0.08);
+}
+
+/* Thin custom scrollbar in modal */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-obsidian-700) transparent;
+}
